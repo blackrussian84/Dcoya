@@ -9,12 +9,6 @@
   </a>
 </h4>
 
-
-<details open>
-<summary>
-Pre-requisites
-</summary> <br />
-## Try Harder Mindset !!!!!
   
 ## Tools Used  
 
@@ -24,20 +18,46 @@ Pre-requisites
 - [GET Lens](https://k8slens.dev/) 
 
 
-## How i generated my index Html with the JS 🧞
+### 
+Creating index Html with the JS 🧞
 > **Note**
-> I did POC with simple code that looks like that ![Screenshot from 2023-12-12 22-38-59](https://github.com/blackrussian84/Dcoya/assets/61284544/924156d6-4fa9-49ee-9cfb-d499d413c842)
-> 
-both the client and server need to be started by the `npm run serve:[application]`
-```shell
-mkdir My-app
-cd my app
-npx create-react-app my-app
+> POC with simple code that looks like that ![Screenshot from 2023-12-12 22-38-59](https://github.com/blackrussian84/Dcoya/assets/61284544/924156d6-4fa9-49ee-9cfb-d499d413c842)
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine Info</title>
+    <script>
+        function displayInfo() {
+            document.getElementById('machineName').textContent = 'Machine Name: ' + '__MACHINE_NAME__';
+            document.getElementById('dateTime').textContent = 'Date and Time: ' + new Date();
+        }
+    </script>
+</head>
+<body onload="displayInfo()">
+    <h1>Machine Info</h1>
+    <p id="machineName"></p>
+    <p id="dateTime"></p>
+</body>
+</html>
+```
+> JavaScript running in a browser cannot directly access environment variables for security reasons so 
+> server-side code was nedded to be created to inject the environment variable into our HTML
 
+```shell
+#!/bin/sh
+# Replace the placeholder with the actual machine name
+sed -i "s/__MACHINE_NAME__/$MACHINE_NAME/g" /usr/share/nginx/html/index.html
+# Start Nginx
+nginx -g 'daemon off;'
 ```
 
-⛔🔒🐞🧞😻
 
+
+
+
+⛔🔒🐞🧞😻
+both the client and server need to be started by the `npm run serve:[application]`
 To be able to start development on Amplication, make sure that you have the following prerequisites installed:
 
 ###

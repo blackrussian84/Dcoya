@@ -21,7 +21,16 @@
 ### 
 Creating index Html with the JS 🧞
 > **Note**
-> POC with simple code that looks like that ![Screenshot from 2023-12-12 22-38-59](https://github.com/blackrussian84/Dcoya/assets/61284544/924156d6-4fa9-49ee-9cfb-d499d413c842)
+ POC with simple code that looks like that
+ ![Screenshot from 2023-12-12 22-38-59](https://github.com/blackrussian84/Dcoya/assets/61284544/924156d6-4fa9-49ee-9cfb-d499d413c842)
+
+
+</details>
+<details open>
+<summary>
+The Html + JS code
+</summary> <br />
+
 ```html
 <!DOCTYPE html>
 <html>
@@ -41,8 +50,8 @@ Creating index Html with the JS 🧞
 </body>
 </html>
 ```
-> JavaScript running in a browser cannot directly access environment variables for security reasons so 
-> server-side code was nedded to be created to inject the environment variable into our HTML
+> ⛔ JavaScript running in a browser cannot directly access environment variables for security reasons so 
+> server-side code was nedded to be created to inject the environment variable into our HTML 🔒
 
 ```shell
 #!/bin/sh
@@ -60,12 +69,6 @@ nginx -g 'daemon off;'
 both the client and server need to be started by the `npm run serve:[application]`
 To be able to start development on Amplication, make sure that you have the following prerequisites installed:
 
-###
-
-##
-- Node.js
-- Docker
-- Git
 </details>
 <details open>
 <summary>

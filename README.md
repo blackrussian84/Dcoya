@@ -1,6 +1,13 @@
 <p align="center">
   <i align="center">Static Web page with Devops 🦸 magic 🪄 and Security in Mind 🚀</i>
 </p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+![Python]
+![Docker]
+![React]
+![Kubernetes]
+![Devops]
+![SSL]
 
 <h4 align="center">
   <a href="https://github.com/amplication/amplication/actions/workflows/ci.yml">
@@ -16,9 +23,10 @@ Pre-requisites
 
   
 ## Usage 
-To get started , we first need to download kubectl ([kubectl Install](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/))
-I used Minikube you welcome to download it from here [Install Minikube](https://minikube.sigs.k8s.io/docs/start/)
-Docker installed on the system [get that docker](https://docs.docker.com/get-docker/)
+
+- To get started , we first need to download kubectl The K8S whisper [GET kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+- I used Minikube as my Container orcestartor, you welcome to download it here [GET Minikube](https://minikube.sigs.k8s.io/docs/start/) 🪆
+- Docker might be usefull [GET docker](https://docs.docker.com/get-docker/)
 
 
 
@@ -28,7 +36,7 @@ Docker installed on the system [get that docker](https://docs.docker.com/get-doc
 npm run db:migrate:deploy
 ```
 
-
+⛔🔒🐞🧞😻
 
 To be able to start development on Amplication, make sure that you have the following prerequisites installed:
 

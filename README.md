@@ -10,7 +10,8 @@
 </h4>
 
   
-## Tools Used  
+## 
+Tools Used  
 
 - [GET Minikube](https://minikube.sigs.k8s.io/docs/start/)
 - [GET kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) 
@@ -18,10 +19,11 @@
 - [GET Lens](https://k8slens.dev/) 
 
 
-### 
+###
 Creating index Html with the JS 🧞
-> **Note**
- POC with simple code that looks like that
+
+
+ POC WORKED 😻
  ![Screenshot from 2023-12-12 22-38-59](https://github.com/blackrussian84/Dcoya/assets/61284544/924156d6-4fa9-49ee-9cfb-d499d413c842)
 
 
@@ -62,6 +64,32 @@ nginx -g 'daemon off;'
 ```
 
 
+## Then i desided to  shift gear 🐞
+> The agenda was to create static content with cute look that will be served by the [NGINX] using React lib.
+> so i ran
+
+1.create a project dir and cd into it:
+```bash
+npx create-react-app my-app
+#change what need to be chang and create a production ready artifact of all the static content and logic that will be passed to the Dockerfile with nginx as content.
+#using the command:
+npm run build
+```
+Creating the self signed certificate:
+```bash
+ openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -config openssl.cnf -extensions 'v3_req'
+```
+Creating the volumes to pass the crt and key securly:
+```bash
+docker volume create ssl_cert
+docker volume create ssl_private
+```
+Bulding and run the Dockerfile :
+```bash
+docker build -t myapp .
+docker run -p 8008:80 -e MACHINE_NAME=JenyaMachine -d my-app2:latest                                                        # in the POC case above
+docker run -v cat_ssl_certs:/etc/ssl/certs -v cat_ssl_private:/etc/ssl/private -d -it -p 443:443 cats:latest                # in secure way with mounted volumes
+```
 
 
 
@@ -69,11 +97,6 @@ nginx -g 'daemon off;'
 both the client and server need to be started by the `npm run serve:[application]`
 To be able to start development on Amplication, make sure that you have the following prerequisites installed:
 
-</details>
-<details open>
-<summary>
-Running Amplication
-</summary> <br />
 
 
 

@@ -22,10 +22,9 @@ Tools Used
 ###
 Creating index Html with the JS 🧞
 
-
- POC WORKED 😻
  ![Screenshot from 2023-12-12 22-38-59](https://github.com/blackrussian84/Dcoya/assets/61284544/924156d6-4fa9-49ee-9cfb-d499d413c842)
 
+ POC WORKED 😻
 
 </details>
 <details open>
@@ -52,6 +51,7 @@ The Html + JS code
 </body>
 </html>
 ```
+
 > ⛔ JavaScript running in a browser cannot directly access environment variables for security reasons so 
 > server-side code was nedded to be created to inject the environment variable into our HTML 🔒
 
@@ -64,15 +64,15 @@ nginx -g 'daemon off;'
 ```
 
 
-## Then i desided to  shift gear 🐞
-> The agenda was to create static content with cute look that will be served by the [NGINX] using React lib.
-> so i ran
+## Then I decided to shift gears!
+> The agenda was to create static content with a 'cute look',
+> that will be served by [NGINX] using the React library.
+> 
 
 1.create a project dir and cd into it:
 ```bash
 npx create-react-app my-app
-#change what need to be chang and create a production ready artifact of all the static content and logic that will be passed to the Dockerfile with nginx as content.
-#using the command:
+# Modify, create a production-ready artifact with static content and logic, then pass it to the Nginx Dockerfile later on:
 npm run build
 ```
 Creating the self signed certificate:
@@ -87,43 +87,31 @@ docker volume create ssl_private
 Bulding and run the Dockerfile :
 ```bash
 docker build -t myapp .
-docker run -p 8008:80 -e MACHINE_NAME=JenyaMachine -d my-app2:latest                                                        # in the POC case above
-docker run -v cat_ssl_certs:/etc/ssl/certs -v cat_ssl_private:/etc/ssl/private -d -it -p 443:443 cats:latest                # in secure way with mounted volumes
+docker run -p 8008:80 -e MACHINE_NAME=JenyaMachine -d my-app2:latest        # in the POC case above
+docker run -v cat_ssl_certs:/etc/ssl/certs -v cat_ssl_private:/etc/ssl/private -d -it -p 443:443 cats:latest     #  secure way with mounted volumes
+# 
 ```
-
-
-
-⛔🔒🐞🧞😻
-both the client and server need to be started by the `npm run serve:[application]`
-To be able to start development on Amplication, make sure that you have the following prerequisites installed:
-
-
-
-
-
-## Latest Development Changes
+Taging the imag and push it to docker-hub
 ```bash
-python -m pip install git+https://github.com/anfederico/clairvoyant
+docker tag mydocker docker.io/blackrussian84/mydocker:latest
+docker push docker.io/blackrussian84/mydocker:latest
 ```
-> **Note**
-> In order to run the Amplication client properly, both the client and server need to be started by the `npm run serve:[application]`
-**BEFORE** you run the following steps make sure:
-1. You have typescript installed locally on you machine ```npm install -g typescript```
-2. You are using a supported node version (check `engines` `node` in the [package.json](./package.json))
-3. You are using a supported npm version (check `engines` `npm` in the [package.json](./package.json))
-4. You have `docker` installed and running on your machine
- 
-```python
-from clairvoyant.engine import Backtest
-import pandas as pd
 
-features  = ["EMA", "SSO"]   # Financial indicators of choice
-trainStart = 0               # Start of training period
-trainEnd   = 700             # End of training period
-testStart  = 701             # Start of testing period
-testEnd    = 1000            # End of testing period
-buyThreshold  = 0.65         # Confidence threshold for predicting buy (default = 0.65) 
-sellThreshold = 0.65         # Confidence threshold for predicting sell (default = 0.65)
-continuedTraining = False    # Continue training during testing period? (default = false)
+The k8s deployment was created with yml files:
+```bash
+#The app deployed to chosen namespace.
+#ingress contraller was deployed.
+#SSL termination was implemented on the ingress level, the dockerfile and the service was configured accordinly.
+#kubernetes secret was created and injected via the deployment/ingress
+deployment.yml
+service.yml
+ingress.yml
+
 ```
+### Testing stage:
+Python script was created with interactive mode and default parameters:
+
+![Screenshot from 2023-12-13 01-35-28](https://github.com/blackrussian84/Dcoya/assets/61284544/4b4f1e80-4d68-4efa-9384-79501560f4ac)
+
+> The script ask you for domain, port and the cert path
 

@@ -8,9 +8,14 @@
   </a>
 </h4>
 
+
+<details open>
+<summary>
+Pre-requisites
+</summary> <br />
 ## Usage 
-To get started , we need to download kubectl [kubectl install]([https://app.amplication.com](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
-I used Minikube you welcome to download it from [Install Minikube](https://minikube.sigs.k8s.io/docs/start/)
+To get started , we first need to download kubectl [kubectl Install](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+I used Minikube you welcome to download it from here [Install Minikube](https://minikube.sigs.k8s.io/docs/start/)
 Docker installed on the system [get that docker](https://docs.docker.com/get-docker/)
 
 
@@ -22,10 +27,7 @@ npm run db:migrate:deploy
 ```
 
 
-<details open>
-<summary>
-Pre-requisites
-</summary> <br />
+
 To be able to start development on Amplication, make sure that you have the following prerequisites installed:
 
 ###

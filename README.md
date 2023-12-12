@@ -8,31 +8,43 @@
   </a>
 </h4>
 
+## Usage 
+To get started , we need to download kubectl [kubectl install]([https://app.amplication.com](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+I used Minikube you welcome to download it from [Install Minikube](https://minikube.sigs.k8s.io/docs/start/)
+Docker installed on the system [get that docker](https://docs.docker.com/get-docker/)
 
-## Introduction
+
+
+
+4. Apply database migrations
+```shell
+npm run db:migrate:deploy
+```
 
 
 <details open>
 <summary>
- Features
+Pre-requisites
+</summary> <br />
+To be able to start development on Amplication, make sure that you have the following prerequisites installed:
+
+###
+
+- Node.js
+- Docker
+- Git
+</details>
+
+<details open>
+<summary>
+Running Amplication
 </summary> <br />
 
-<p align="center">
-    <img width="49%" src="" alt="apis"/>
-&nbsp;
-    <img width="49%" src="" alt="data-models"/>
-</p>
-
-<p align="center">
-    <img width="49%" src="" alt="plugins"/>
-&nbsp;
-    <img width="49%" src="" alt="microservices"/>
-</p> 
-    
-<p align="center">
-    <img width="49%" src="" alt="own-your-code"/>
-&nbsp;
-    <img width="49%" src="" alt="customize-code"/>
-</p>
-    
-</details>
+> **Note**
+> In order to run the Amplication client properly, both the client and server need to be started by the `npm run serve:[application]`
+**BEFORE** you run the following steps make sure:
+1. You have typescript installed locally on you machine ```npm install -g typescript```
+2. You are using a supported node version (check `engines` `node` in the [package.json](./package.json))
+3. You are using a supported npm version (check `engines` `npm` in the [package.json](./package.json))
+4. You have `docker` installed and running on your machine
+ 

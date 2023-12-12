@@ -13,8 +13,10 @@
 <summary>
 Pre-requisites
 </summary> <br />
+
+  
 ## Usage 
-To get started , we first need to download kubectl [kubectl Install](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+To get started , we first need to download kubectl ([kubectl Install](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/))
 I used Minikube you welcome to download it from here [Install Minikube](https://minikube.sigs.k8s.io/docs/start/)
 Docker installed on the system [get that docker](https://docs.docker.com/get-docker/)
 

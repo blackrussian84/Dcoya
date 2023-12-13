@@ -1,8 +1,10 @@
 <p align="center">
   <i align="center">Creating a Static Web page with Devops 🦸 magic 🪄 and Security in Mind 🚀</i>
 </p>
-<i align="center">Devops Challenge</i>
 
+<p align="center">
+<i align="center">Devops Challenge</i>
+</p>
 <h4 align="center">
     <img src="https://wallpapercave.com/uwp/uwp4109137.png" alt="continuous integration" style="height: 700px;">
   </a>
@@ -110,7 +112,7 @@ The k8s deployment was created with yml files:
 #kubernetes secret was created and injected via the deployment/ingress
 deployment.yml
 
-file:///home/shwebs/Pictures/Screenshots/devPic/deploymentyml.png
+![deploymentyml](https://github.com/blackrussian84/Dcoya/assets/61284544/936cc9e3-ae4a-4e79-8e6d-9b18041f7190)
 
 service.yml
 
@@ -118,7 +120,8 @@ service.yml
 
 ingress.yml
 
-file:///home/shwebs/Pictures/Screenshots/devPic/ingressyml.png
+![ingressyml](https://github.com/blackrussian84/Dcoya/assets/61284544/3ad51484-9d9f-403d-8f79-74f6b0e5bf43)
+
 
 ```bash
 Kubectl apply -f deployment.yml.....
@@ -134,9 +137,17 @@ Python script was created with interactive mode and default parameters:
 
 </details>
 <details open>
+  Lens Kubernetes IDE images of successful deployment:
 <summary>
 </summary> <br />
 
+![Screenshot from 2023-12-13 02-40-02](https://github.com/blackrussian84/Dcoya/assets/61284544/68299411-f55c-4247-af61-4ccfb62d2e5c)
 
+![Screenshot from 2023-12-13 02-43-21](https://github.com/blackrussian84/Dcoya/assets/61284544/c77fc84f-0a93-4e58-9d9f-eff0907d5e39)
 
+![Screenshot from 2023-12-13 02-45-32](https://github.com/blackrussian84/Dcoya/assets/61284544/b7217f81-da03-4368-9459-4155e98ad0dc)
+
+> Docker hub 
+
+![Screenshot from 2023-11-21 21-09-53](https://github.com/blackrussian84/Dcoya/assets/61284544/7e515b57-86bb-49a0-b480-e16e48f376e0)
 

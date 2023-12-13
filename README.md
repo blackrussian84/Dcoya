@@ -164,10 +164,49 @@ npx create-react-app my-app
 # Modify, create a production-ready artifact with static content and logic, then pass it to the Nginx Dockerfile later on:
 npm run build
 ```
-Creating the self signed certificate:
+Creating the self signed certificate, i used conf file in addition :
 ```bash
  openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls.key -out tls.crt -config openssl.cnf -extensions 'v3_req'
 ```
+```bash
+[ req ]
+default_bits        = 2048
+default_keyfile     = server-key.pem
+distinguished_name  = subject
+req_extensions      = req_ext
+x509_extensions     = x509_ext
+string_mask         = utf8only
+
+[ subject ]
+    
+commonName          = dev.cats.com
+
+[ x509_ext ]
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid,issuer
+basicConstraints        = CA:FALSE
+keyUsage                = digitalSignature, keyEncipherment
+subjectAltName          = @alternate_names
+nsComment               = "OpenSSL Generated Certificate"
+
+[ req_ext ]
+subjectKeyIdentifier    = hash
+
+[ alternate_names ]
+DNS.1       = dev.cats.com
+
+[ ssl_client ]
+extendedKeyUsage  = clientAuth
+
+[ v3_req ]
+# Extensions to add to a certificate request
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alternate_names
+[ alternate_names ]
+DNS.1 = dev.cats.com
+```
+
 Creating the volumes to pass the crt and key securly:
 ```bash
 docker volume create ssl_cert

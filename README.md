@@ -5,14 +5,17 @@
 <p align="center">
 <i align="center">Devops Challenge</i>
 </p>
+
+
 <h4 align="center">
-    <img src="(https://github.com/blackrussian84/Dcoya/assets/61284544/3abddffc-165b-4945-bdfe-e90355d6fcf5)" alt="" style="height: 700px;">
+    ![eyes](https://github.com/blackrussian84/Dcoya/assets/61284544/7c9f7c8e-600d-4720-8368-4b223ca366ec)
   </a>
 </h4>
 
 
 
   
+
 ## 
 Tools Used  
 

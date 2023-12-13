@@ -66,6 +66,9 @@ sed -i "s/__MACHINE_NAME__/$MACHINE_NAME/g" /usr/share/nginx/html/index.html
 nginx -g 'daemon off;'
 ```
 
+## Dockerfiles:
+
+
 
 ## Then I decided to shift gears!
 
@@ -111,20 +114,105 @@ The k8s deployment was created with yml files:
 #SSL termination was implemented on the ingress level, the dockerfile and the service was configured accordinly.
 #kubernetes secret was created and injected via the deployment/ingress
 deployment.yml
+```bash
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cats-app
+  namespace: cats
+  labels:
+    app: cats-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cats-app
+  template:
+    metadata:
+      labels:
+        app: cats-app
+    spec:
+      containers:
+      - name: cats-app
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "512Mi"
+          requests:
+            cpu: "0.2"
+            memory: "256Mi"
+        image: docker.io/blackrussian84/catshttp:latest
+        ports:
+        - containerPort: 443
+        - containerPort: 80    
+        volumeMounts:
+        - name: tls
+          mountPath: "/etc/ssl/certs/tls.crt"
+          subPath: "tls.crt"
+          readOnly: true
+        - name: tls
+          mountPath: "/etc/ssl/private/tls.key"
+          subPath: "tls.key"
+          readOnly: true
+      volumes:
+      - name: tls
+        secret:
+          secretName: catsecret   
+```
 
-![deploymentyml](https://github.com/blackrussian84/Dcoya/assets/61284544/936cc9e3-ae4a-4e79-8e6d-9b18041f7190)
 
 service.yml
+```bash
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: cats
+  name: cats-app-service
+  labels:
+    app: cats-app
+spec:
+  selector:
+    app: cats-app
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
+   
+```
 
-![serviceyml](https://github.com/blackrussian84/Dcoya/assets/61284544/c4c35ebd-4032-4f9f-b168-afb135e70095)
 
 ingress.yml
 
-![ingressyml](https://github.com/blackrussian84/Dcoya/assets/61284544/3ad51484-9d9f-403d-8f79-74f6b0e5bf43)
+```bash
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: cats
+  name: cats-app-ingress-https
+spec:
+  tls:
+  - hosts:
+    - dev.cats.com
+    secretName: catsecret
+  rules:
+  - host: dev.cats.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: cats-app-service
+            port:
+              number: 80
+
+```
 
 
 ```bash
-Kubectl apply -f deployment.yml.....
+Kubectl apply -f deployment.yml.....ingre......ser....
 ```
 
 
@@ -134,12 +222,13 @@ Python script was created with interactive mode and default parameters:
 
 ![Screenshot from 2023-12-13 01-35-28](https://github.com/blackrussian84/Dcoya/assets/61284544/4b4f1e80-4d68-4efa-9384-79501560f4ac)
 
+### Screenshoots of success
 
 </details>
 <details open>
   Lens Kubernetes IDE images of successful deployment:
 <summary>
-</summary> <br />
+</summary>  
 
 ![Screenshot from 2023-12-13 02-40-02](https://github.com/blackrussian84/Dcoya/assets/61284544/68299411-f55c-4247-af61-4ccfb62d2e5c)
 
@@ -149,5 +238,8 @@ Python script was created with interactive mode and default parameters:
 
 > Docker hub 
 
-![Screenshot from 2023-11-21 21-09-53](https://github.com/blackrussian84/Dcoya/assets/61284544/7e515b57-86bb-49a0-b480-e16e48f376e0)
+![dockerhub](https://github.com/blackrussian84/Dcoya/assets/61284544/e5583684-c3ce-4a35-8264-3ecd18f0fc53)
+
+![Screenshot from 2023-12-12 22-33-44](https://github.com/blackrussian84/Dcoya/assets/61284544/60f044b6-93d2-45e9-b3fe-646e9597ed70)
+
 

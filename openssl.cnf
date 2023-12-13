@@ -1,0 +1,36 @@
+[ req ]
+default_bits        = 2048
+default_keyfile     = server-key.pem
+distinguished_name  = subject
+req_extensions      = req_ext
+x509_extensions     = x509_ext
+string_mask         = utf8only
+
+[ subject ]
+    
+commonName          = dev.cats.com
+
+[ x509_ext ]
+subjectKeyIdentifier    = hash
+authorityKeyIdentifier  = keyid,issuer
+basicConstraints        = CA:FALSE
+keyUsage                = digitalSignature, keyEncipherment
+subjectAltName          = @alternate_names
+nsComment               = "OpenSSL Generated Certificate"
+
+[ req_ext ]
+subjectKeyIdentifier    = hash
+
+[ alternate_names ]
+DNS.1       = dev.cats.com
+
+[ ssl_client ]
+extendedKeyUsage  = clientAuth
+
+[ v3_req ]
+# Extensions to add to a certificate request
+basicConstraints = CA:FALSE
+keyUsage = nonRepudiation, digitalSignature, keyEncipherment
+subjectAltName = @alternate_names
+[ alternate_names ]
+DNS.1 = dev.cats.com

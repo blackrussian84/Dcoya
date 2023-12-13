@@ -1,0 +1,19 @@
+#add namespace gotham to the service
+apiVersion: v1
+kind: Service
+metadata:
+  namespace: cats
+  name: cats-app-service
+  labels:
+    app: cats-app
+spec:
+  selector:
+    app: cats-app
+  ports:
+    - name: http
+      protocol: TCP
+      port: 80
+      targetPort: 80
+  type: NodePort
+   
+---   

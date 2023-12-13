@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cats-app
+  namespace: cats
+  labels:
+    app: cats-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cats-app
+  template:
+    metadata:
+      labels:
+        app: cats-app
+    spec:
+      containers:
+      - name: cats-app
+        resources:
+          limits:
+            cpu: "0.5"
+            memory: "512Mi"
+          requests:
+            cpu: "0.2"
+            memory: "256Mi"
+        image: docker.io/blackrussian84/catshttp:latest
+        ports:
+        - containerPort: 443
+        - containerPort: 80    
+        volumeMounts:
+        - name: tls
+          mountPath: "/etc/ssl/certs/tls.crt"
+          subPath: "tls.crt"
+          readOnly: true
+        - name: tls
+          mountPath: "/etc/ssl/private/tls.key"
+          subPath: "tls.key"
+          readOnly: true
+      volumes:
+      - name: tls
+        secret:
+          secretName: catsecret         
+
+

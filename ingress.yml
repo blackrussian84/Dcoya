@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  namespace: cats
+  name: cats-app-ingress-https
+spec:
+  tls:
+  - hosts:
+    - dev.cats.com
+    secretName: catsecret
+  rules:
+  - host: dev.cats.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: cats-app-service
+            port:
+              number: 80
+

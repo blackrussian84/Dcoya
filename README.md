@@ -227,9 +227,10 @@ docker push docker.io/blackrussian84/mydocker:latest
 
 
 **The Task is nutty :)
-> Nginx configuration: 
-> when the Docker is set up for port [443 support], and in K8s the app should be accessed via 443. We have a situation!!! X2 SSL termination
-> ###!!! Performance Issue !!!###
+>  
+> when the Docker is set up for port [443 support], and  the app in K8s should be accessed via 443.
+>  We have a situation!!! X2 SSL termination 
+> !!! Performance Issue !!!
 The soluttion:
 SSL termination was implemented on the ingress level, the dockerfile and the service was configured accordinly.
 

@@ -103,7 +103,7 @@ docker push docker.io/blackrussian84/mydocker:latest
 ```
 
 The k8s deployment was created with yml files:
-```bash
+
 #The app deployed to chosen namespace.
 #ingress contraller was deployed.
 #SSL termination was implemented on the ingress level, the dockerfile and the service was configured accordinly.
@@ -120,8 +120,11 @@ ingress.yml
 
 file:///home/shwebs/Pictures/Screenshots/devPic/ingressyml.png
 
-
+```bash
+Kubectl apply -f deployment.yml.....
 ```
+
+
 ### Testing stage:
 Python script was created with interactive mode and default parameters:
 > The script ask you for domain, port and the cert path

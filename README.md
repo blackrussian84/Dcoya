@@ -93,7 +93,7 @@ docker run -p 8008:80 -e MACHINE_NAME=JenyaMachine -d my-app2:latest
 ```shell
 #!/bin/sh
 # Replace the placeholder with the actual machine name
-# using the command: [docker run -p 8008:80 -e MACHINE_NAME=JenyaMachine -d my-app2:latest]
+# using the command: [docker run -p 8008:80 -e MACHINE_NAME=staging -d my-app2:latest]
 ## The change will be effective with each run of the Docker, as opposed to building the Docker in the advanced project. 
 sed -i "s/__MACHINE_NAME__/$MACHINE_NAME/g" /usr/share/nginx/html/index.html
 # Start Nginx

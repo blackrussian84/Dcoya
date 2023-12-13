@@ -22,12 +22,12 @@ Tools Used
 
 
 
-## The project folder is in the [MASTER BRANCH]
+## 🙈 The main project folder is in the [MASTER BRANCH] 💡
 
 ###
-Creating index Html with the JS 🧞
+Task section 1 - Creating index Html with the JS 🧞
 
-> Dockefile:
+> Create the Dockefile:
 
 ```bash
 # Use Nginx alpine image
@@ -59,16 +59,13 @@ USER nginx
 CMD ["/usr/share/nginx/html/start.sh"]
 ```
 
+Build && Run 
 ```bash
 docker build -t my-app2 . --no-cache
 docker run -p 8008:80 -e MACHINE_NAME=JenyaMachine -d my-app2:latest
 ```
 
-
-
-
-### The Html + JS code
-
+## The Html + JS code
 
 ```html
 <!DOCTYPE html>
@@ -103,8 +100,8 @@ sed -i "s/__MACHINE_NAME__/$MACHINE_NAME/g" /usr/share/nginx/html/index.html
 nginx -g 'daemon off;'
 ```
 
-
  ![Screenshot from 2023-12-12 22-38-59](https://github.com/blackrussian84/Dcoya/assets/61284544/924156d6-4fa9-49ee-9cfb-d499d413c842)
+ 
 
  POC WORKED 😻
 

@@ -188,7 +188,12 @@ docker push docker.io/blackrussian84/mydocker:latest
 > Nginx configuration: 
 > when the Docker is set up for port [443 support], and in K8s the app should be accessed via 443. We have a situation!!! X2 SSL termination
 > ###!!! Performance Issue !!!###
+The soluttion:
+SSL termination was implemented on the ingress level, the dockerfile and the service was configured accordinly.
+
+Example of nginx.conf (i used one with 301 redirect http and  one with nginx.conf and default.conf according to the scenarios)
 ```bash
+
 # nginx.conf
 # Events block for global settings
 events {
@@ -229,12 +234,11 @@ http {
 ```
 
 
-### The k8s deployment was created with yml files:
+## The k8s deployment was created with yml files:
 
-#The app deployed to chosen namespace.
-#ingress contraller was deployed.
-#SSL termination was implemented on the ingress level, the dockerfile and the service was configured accordinly.
-#kubernetes secret was created and injected via the deployment/ingress
+- The app deployed to chosen namespace.
+- ingress contraller was deployed.
+- kubernetes secret was created and injected via the deployment/ingress
 
 
 ##  deployment.yml
@@ -346,23 +350,24 @@ Python script was created with interactive mode and default parameters:
 
 ![Screenshot from 2023-12-13 01-35-28](https://github.com/blackrussian84/Dcoya/assets/61284544/4b4f1e80-4d68-4efa-9384-79501560f4ac)
 
-### Screenshoots of success
+### Screenshoots of success !!!
 
-</details>
-<details open>
   Lens Kubernetes IDE images of successful deployment:
-<summary>
-</summary>  
+
 
 ![Screenshot from 2023-12-13 02-40-02](https://github.com/blackrussian84/Dcoya/assets/61284544/68299411-f55c-4247-af61-4ccfb62d2e5c)
 
+
 ![Screenshot from 2023-12-13 02-43-21](https://github.com/blackrussian84/Dcoya/assets/61284544/c77fc84f-0a93-4e58-9d9f-eff0907d5e39)
+
 
 ![Screenshot from 2023-12-13 02-45-32](https://github.com/blackrussian84/Dcoya/assets/61284544/b7217f81-da03-4368-9459-4155e98ad0dc)
 
 > Docker hub 
 
 ![dockerhub](https://github.com/blackrussian84/Dcoya/assets/61284544/e5583684-c3ce-4a35-8264-3ecd18f0fc53)
+
+
 
 ![Screenshot from 2023-12-12 22-33-44](https://github.com/blackrussian84/Dcoya/assets/61284544/60f044b6-93d2-45e9-b3fe-646e9597ed70)
 

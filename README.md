@@ -234,7 +234,7 @@ docker push docker.io/blackrussian84/mydocker:latest
 The soluttion:
 SSL termination was implemented on the ingress level, the dockerfile and the service was configured accordinly.
 
-Example of nginx.conf (i used one with 301 redirect http and  one with nginx.conf and default.conf according to the scenarios)
+Example of nginx.conf 
 ```bash
 
 # nginx.conf

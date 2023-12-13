@@ -5,12 +5,12 @@
 <i align="center">Devops Challenge</i>
 </p>
 <h4 align="center">
-    <img src="https://github.com/blackrussian84/Dcoya/assets/61284544/3abddffc-165b-4945-bdfe-e90355d6fcf5" alt="continuous integration" style="height: 700px;">
+    ![Screenshot from 2023-12-13 02-55-07](https://github.com/blackrussian84/Dcoya/assets/61284544/3abddffc-165b-4945-bdfe-e90355d6fcf5)
   </a>
 </h4>
 
 
-![Screenshot from 2023-12-13 02-55-07](https://github.com/blackrussian84/Dcoya/assets/61284544/3abddffc-165b-4945-bdfe-e90355d6fcf5)
+
 
 
 ## 
@@ -28,6 +28,43 @@ Tools Used
 
 ###
 Creating index Html with the JS 🧞
+
+> Dockefile:
+
+```bash
+# Use Nginx alpine image
+FROM alpine:latest
+
+RUN apk add --no-cache nginx && \
+    touch /var/run/nginx.pid && \
+    chown -R nginx:nginx /var/run/nginx.pid && \
+    mkdir -p /run/nginx && \
+    mkdir -p /etc/ssl/certs/ && \
+    mkdir -p /etc/ssl/private/ && \
+    mkdir -p /usr/share/nginx/html /var/cache/nginx /etc/nginx/conf.d 
+
+# Change ownership of the Nginx web directory to the nginx user
+RUN chown -R nginx:nginx /usr/share/nginx/html && chmod -R 755 /usr/share/nginx/html
+
+# Copy the index.html and start.sh files to the Docker image
+COPY index.html start.sh /usr/share/nginx/html/
+COPY nginx.conf /etc/nginx/
+COPY default.conf /etc/nginx/conf.d/
+
+# Make the start.sh script executable
+RUN chmod +x /usr/share/nginx/html/start.sh
+
+# Switch to the nginx user
+USER nginx
+
+# Start the container with the start.sh script
+CMD ["/usr/share/nginx/html/start.sh"]
+```
+
+```bash
+docker run -p 8008:80 -e MACHINE_NAME=JenyaMachine -d my-app2:latest
+```
+
 
  ![Screenshot from 2023-12-12 22-38-59](https://github.com/blackrussian84/Dcoya/assets/61284544/924156d6-4fa9-49ee-9cfb-d499d413c842)
 
@@ -74,6 +111,43 @@ nginx -g 'daemon off;'
 
 ## Dockerfiles:
 
+```bash
+# Use the latest version of Alpine Linux as the base image
+FROM alpine:latest
+
+# Install Nginx and create necessary directories and files
+RUN apk add --no-cache nginx && \
+    touch /var/run/nginx.pid && \
+    mkdir -p /run/nginx && \
+    mkdir -p /etc/ssl/certs/ && \
+    mkdir -p /etc/ssl/private/ && \
+    mkdir -p /usr/share/nginx/html /var/cache/nginx /etc/nginx/conf.d 
+
+# Copy the build files to the Nginx document root
+COPY build /usr/share/nginx/html/
+
+# Copy the Nginx configuration file
+COPY nginx.conf /etc/nginx/nginx.conf
+
+# Set the permissions of the files in the Nginx document root to be readable by everyone
+# If the Nginx process needs to execute any of these files, you might need to add execute permissions as well
+RUN chmod -R 744 /usr/share/nginx/html/*
+
+# Change the ownership of the necessary directories and files to the 'nginx' user
+# This allows the Nginx process to read, write, and execute the files
+RUN chown -R nginx:nginx /var/run/nginx.pid /usr/share/nginx/html/* /var/cache/nginx /var/log/nginx /etc/nginx/conf.d /etc/ssl/private/ /etc/ssl/certs/
+
+# Run the container as the 'nginx' user
+USER nginx
+
+# Expose port 443 for HTTPS
+
+EXPOSE 80
+# Start Nginx in the foreground so that the Docker container doesn't exit
+CMD ["nginx", "-g", "daemon off;"]
+```
+
+
 
 
 ## Then I decided to shift gears!
@@ -113,7 +187,53 @@ docker tag mydocker docker.io/blackrussian84/mydocker:latest
 docker push docker.io/blackrussian84/mydocker:latest
 ```
 
-The k8s deployment was created with yml files:
+
+**The Task is nutty :)
+> Nginx configuration: 
+> when the Docker is set up for port [443 support], and in K8s the app should be accessed via 443. We have a situation!!!
+> ###!!! Performance Issue !!!###
+```bash
+# nginx.conf
+# Events block for global settings
+events {
+    worker_connections 1024;  # Adjust based on your system's capabilities
+}
+
+# HTTP block for general configuration
+http {
+    # Redirect HTTP to HTTPS
+    server {
+        listen 80;
+        server_name dev.batman.com;
+
+        location / {
+            return 301 https://$host$request_uri;
+        }
+    }
+
+    # HTTPS server block
+    server {
+        listen 443 ssl;
+        server_name dev.batman.com;
+
+        # SSL Certificate and Key
+        ssl_certificate /etc/ssl/certs/tls.crt;
+        ssl_certificate_key /etc/ssl/private/tls.key;
+
+        # Root and Index
+        root /usr/share/nginx/html/;
+        index index.html;
+
+        # Location Configuration
+        location / {
+            try_files $uri $uri/ =404;
+        }
+    }
+}
+```
+
+
+### The k8s deployment was created with yml files:
 
 #The app deployed to chosen namespace.
 #ingress contraller was deployed.

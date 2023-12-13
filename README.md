@@ -1,10 +1,9 @@
 <p align="center">
-  <i align="center">Static Web page with Devops 🦸 magic 🪄 and Security in Mind 🚀</i>
+  <i align="center">Creating a Static Web page with Devops 🦸 magic 🪄 and Security in Mind 🚀</i>
 </p>
-
+<i align="center">Devops Challenge</i>
 
 <h4 align="center">
-  <a href="https://github.com/amplication/amplication/actions/workflows/ci.yml">
     <img src="https://wallpapercave.com/uwp/uwp4109137.png" alt="continuous integration" style="height: 700px;">
   </a>
 </h4>
@@ -58,6 +57,8 @@ The Html + JS code
 ```shell
 #!/bin/sh
 # Replace the placeholder with the actual machine name
+# using the command: [docker run -p 8008:80 -e MACHINE_NAME=JenyaMachine -d my-app2:latest]
+## The change will be effective with each run of the Docker, as opposed to building the Docker in the advanced project. 
 sed -i "s/__MACHINE_NAME__/$MACHINE_NAME/g" /usr/share/nginx/html/index.html
 # Start Nginx
 nginx -g 'daemon off;'
@@ -65,9 +66,13 @@ nginx -g 'daemon off;'
 
 
 ## Then I decided to shift gears!
+
+![Screenshot from 2023-12-13 02-27-22](https://github.com/blackrussian84/Dcoya/assets/61284544/1e7141cd-7ff7-4ac6-a763-4c80f4f5a7be)
+
+
 > The agenda was to create static content with a 'cute look',
-> that will be served by [NGINX] using the React library.
-> 
+> that will be served by [NGINX].
+
 
 1.create a project dir and cd into it:
 ```bash
@@ -104,14 +109,31 @@ The k8s deployment was created with yml files:
 #SSL termination was implemented on the ingress level, the dockerfile and the service was configured accordinly.
 #kubernetes secret was created and injected via the deployment/ingress
 deployment.yml
+
+file:///home/shwebs/Pictures/Screenshots/devPic/deploymentyml.png
+
 service.yml
+
+![serviceyml](https://github.com/blackrussian84/Dcoya/assets/61284544/c4c35ebd-4032-4f9f-b168-afb135e70095)
+
 ingress.yml
+
+file:///home/shwebs/Pictures/Screenshots/devPic/ingressyml.png
+
 
 ```
 ### Testing stage:
 Python script was created with interactive mode and default parameters:
+> The script ask you for domain, port and the cert path
 
 ![Screenshot from 2023-12-13 01-35-28](https://github.com/blackrussian84/Dcoya/assets/61284544/4b4f1e80-4d68-4efa-9384-79501560f4ac)
 
-> The script ask you for domain, port and the cert path
+
+</details>
+<details open>
+<summary>
+</summary> <br />
+
+
+
 

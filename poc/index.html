@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Machine Info</title>
+    <script>
+        function displayInfo() {
+            document.getElementById('machineName').textContent = 'Machine Name: ' + '__MACHINE_NAME__';
+            document.getElementById('dateTime').textContent = 'Date and Time: ' + new Date();
+        }
+    </script>
+</head>
+<body onload="displayInfo()">
+    <h1>Machine Info</h1>
+    <p id="machineName"></p>
+    <p id="dateTime"></p>
+</body>
+</html>

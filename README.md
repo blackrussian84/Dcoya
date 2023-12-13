@@ -5,7 +5,7 @@
 <i align="center">Devops Challenge</i>
 </p>
 <h4 align="center">
-    ![Screenshot from 2023-12-13 02-55-07](https://github.com/blackrussian84/Dcoya/assets/61284544/3abddffc-165b-4945-bdfe-e90355d6fcf5)
+    <image src=https://github.com/blackrussian84/Dcoya/assets/61284544/3abddffc-165b-4945-bdfe-e90355d6fcf5>
   </a>
 </h4>
 

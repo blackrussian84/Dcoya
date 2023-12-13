@@ -12,11 +12,6 @@
 
 
 
-
-## 
-
-  
-
 ## 
 Tools Used  
 
@@ -62,19 +57,15 @@ CMD ["/usr/share/nginx/html/start.sh"]
 ```
 
 ```bash
+docker build -t my-app2 . --no-cache
 docker run -p 8008:80 -e MACHINE_NAME=JenyaMachine -d my-app2:latest
 ```
 
 
- ![Screenshot from 2023-12-12 22-38-59](https://github.com/blackrussian84/Dcoya/assets/61284544/924156d6-4fa9-49ee-9cfb-d499d413c842)
 
- POC WORKED 😻
 
-</details>
-<details open>
-<summary>
-The Html + JS code
-</summary> <br />
+### The Html + JS code
+
 
 ```html
 <!DOCTYPE html>
@@ -108,6 +99,11 @@ sed -i "s/__MACHINE_NAME__/$MACHINE_NAME/g" /usr/share/nginx/html/index.html
 # Start Nginx
 nginx -g 'daemon off;'
 ```
+
+
+ ![Screenshot from 2023-12-12 22-38-59](https://github.com/blackrussian84/Dcoya/assets/61284544/924156d6-4fa9-49ee-9cfb-d499d413c842)
+
+ POC WORKED 😻
 
 ## Dockerfiles:
 
@@ -190,7 +186,7 @@ docker push docker.io/blackrussian84/mydocker:latest
 
 **The Task is nutty :)
 > Nginx configuration: 
-> when the Docker is set up for port [443 support], and in K8s the app should be accessed via 443. We have a situation!!!
+> when the Docker is set up for port [443 support], and in K8s the app should be accessed via 443. We have a situation!!! X2 SSL termination
 > ###!!! Performance Issue !!!###
 ```bash
 # nginx.conf
@@ -239,7 +235,9 @@ http {
 #ingress contraller was deployed.
 #SSL termination was implemented on the ingress level, the dockerfile and the service was configured accordinly.
 #kubernetes secret was created and injected via the deployment/ingress
-deployment.yml
+
+
+##  deployment.yml
 ```bash
 apiVersion: apps/v1
 kind: Deployment
@@ -287,7 +285,7 @@ spec:
 ```
 
 
-service.yml
+##  service.yml
 ```bash
 apiVersion: v1
 kind: Service
@@ -309,7 +307,7 @@ spec:
 ```
 
 
-ingress.yml
+##  ingress.yml
 
 ```bash
 apiVersion: networking.k8s.io/v1

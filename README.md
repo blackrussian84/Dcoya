@@ -1,18 +1,19 @@
 <p align="center">
   <i align="center">Creating a Static Web page with Devops 🦸 magic 🪄 and Security in Mind 🚀</i>
 </p>
-
 <p align="center">
 <i align="center">Devops Challenge</i>
 </p>
-
-
 <h4 align="center">
-    ![eyes](https://github.com/blackrussian84/Dcoya/assets/61284544/7c9f7c8e-600d-4720-8368-4b223ca366ec)
+    <img src="https://github.com/blackrussian84/Dcoya/assets/61284544/3abddffc-165b-4945-bdfe-e90355d6fcf5" alt="continuous integration" style="height: 700px;">
   </a>
 </h4>
 
 
+![Screenshot from 2023-12-13 02-55-07](https://github.com/blackrussian84/Dcoya/assets/61284544/3abddffc-165b-4945-bdfe-e90355d6fcf5)
+
+
+## 
 
   
 

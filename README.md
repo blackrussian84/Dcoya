@@ -105,6 +105,19 @@ nginx -g 'daemon off;'
 
  POC WORKED 😻
 
+
+
+
+
+## Then I decided to shift gears!
+
+![Screenshot from 2023-12-13 02-27-22](https://github.com/blackrussian84/Dcoya/assets/61284544/1e7141cd-7ff7-4ac6-a763-4c80f4f5a7be)
+
+
+> The agenda was to create static content with a 'cute look',
+> that will be served by [NGINX].
+
+
 ## Dockerfiles:
 
 ```bash
@@ -143,16 +156,6 @@ EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
-
-
-
-## Then I decided to shift gears!
-
-![Screenshot from 2023-12-13 02-27-22](https://github.com/blackrussian84/Dcoya/assets/61284544/1e7141cd-7ff7-4ac6-a763-4c80f4f5a7be)
-
-
-> The agenda was to create static content with a 'cute look',
-> that will be served by [NGINX].
 
 
 1.create a project dir and cd into it:
